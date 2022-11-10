@@ -3,7 +3,6 @@ from os import path
 import argparse
 import importlib
 import inspect
-import os
 import sys
 
 FAIL_COLOR = "\033[91m"
@@ -11,7 +10,7 @@ OK_COLOR = "\033[92m"
 WARN_COLOR = "\033[93m"
 
 
-def run_sanity_check(test_dir):
+def run_sanity_check(test_dir):  # noqa
 
     # assert path.isdir(test_dir), FAIL_COLOR+f"No direcotry named {test_dir} found in {os.getcwd()}"
     print(
@@ -53,7 +52,7 @@ def run_sanity_check(test_dir):
     SANITY_TEST_PASSING = True
     WARNING_COUNT = 1
 
-    ## GET()
+    # GET()
     TEST_FOR_GET_METHOD_RESPONSE_CODE = False
     TEST_FOR_GET_METHOD_RESPONSE_BODY = False
     if not test_functions_for_get:
@@ -91,7 +90,7 @@ def run_sanity_check(test_dir):
                 + "Your test case for GET() does not seem to be testing the CONTENTS of the response.\n"
             )
 
-    ## POST()
+    # POST()
     TEST_FOR_POST_METHOD_RESPONSE_CODE = False
     TEST_FOR_POST_METHOD_RESPONSE_BODY = False
     COUNT_POST_METHOD_TEST_FOR_INFERENCE_RESULT = 0
