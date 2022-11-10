@@ -4,8 +4,7 @@ from sklearn.model_selection import train_test_split
 
 # Add the necessary imports for the starter code.
 from starter.ml.data import process_data
-from starter.ml.model import train_model
-from starter.ml.model import compute_model_metrics
+from starter.ml.model import compute_model_metrics, train_model
 
 # Add code to load in the data.
 data = pd.read_csv("../data/census.csv")
