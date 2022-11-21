@@ -1,3 +1,7 @@
+import os
+import pickle
+from typing import Optional, Tuple
+
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import fbeta_score, precision_score, recall_score
@@ -61,3 +65,36 @@ def inference(model: RandomForestClassifier, X: np.array):
         Predictions from the model.
     """
     return model.predict(X)
+
+
+def _model_path(path: str, suffix: str) -> str:
+    return os.path.join(path, f"model{suffix}.pkl")
+
+
+def _encoder_path(path: str, suffix: str) -> str:
+    return os.path.join(path, f"encoder{suffix}.pkl")
+
+
+def save_model(
+    model: RandomForestClassifier, encoder, path: str, suffix: Optional[str] = None
+) -> None:
+    if suffix is None:
+        suffix = ""
+    model_path = _model_path(path, suffix)
+    encoder_path = _encoder_path(path, suffix)
+    with open(model_path, "wb") as f:
+        pickle.dump(model, f)
+    with open(encoder_path, "wb") as f:
+        pickle.dump(encoder, f)
+
+
+def load_model(path: str, suffix: Optional[str] = None) -> Tuple:
+    if suffix is None:
+        suffix = ""
+    model_path = _model_path(path, suffix)
+    encoder_path = _encoder_path(path, suffix)
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
+    with open(encoder_path, "rb") as f:
+        encoder = pickle.load(f)
+    return model, encoder

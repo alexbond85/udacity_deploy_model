@@ -24,10 +24,10 @@ def test_compute_model_metrics():
     y = [0]
     y_pred = [0]
     fbeta, precision, recall = compute_model_metrics(y, y_pred)
-    assert (precision, recall, fbeta) == (1., 1., 1.)
+    assert (precision, recall, fbeta) == (1.0, 1.0, 1.0)
     y = [0, 1]
     y_pred = [1, 1]
     precision, recall, fbeta = compute_model_metrics(y, y_pred)
     assert math.isclose(precision, 0.5)
     assert math.isclose(recall, 1.0)
-    assert math.isclose(fbeta, 2/3)
+    assert math.isclose(fbeta, 2 / 3)
