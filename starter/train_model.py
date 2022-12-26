@@ -4,10 +4,16 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from starter.features import cat_features
+
 # Add the necessary imports for the starter code.
 from starter.ml.data import process_data
-from starter.ml.model import (compute_model_metrics, inference, load_model,
-                              save_model, train_model)
+from starter.ml.model import (
+    compute_model_metrics,
+    inference,
+    load_model,
+    save_model,
+    train_model,
+)
 
 if __name__ == "__main__":
     # Add code to load in the data.

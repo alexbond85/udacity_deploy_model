@@ -6,8 +6,9 @@ from starter.features import cat_features
 from typing import Iterable
 
 
-def evaluation_on_slices(df_data: pd.DataFrame, cat_col_name: str,
-                         model, encoder, lb) -> Iterable:
+def evaluation_on_slices(
+    df_data: pd.DataFrame, cat_col_name: str, model, encoder, lb
+) -> Iterable:
     categories = sorted(list(set(df_data[cat_col_name])))
     for c in categories:
         df = df_data[df_data[cat_col_name] == c]
@@ -20,8 +21,7 @@ def evaluation_on_slices(df_data: pd.DataFrame, cat_col_name: str,
             lb=lb,
         )
         data_input = process_data(
-            df, categorical_features=cat_features, training=False,
-            encoder=encoder
+            df, categorical_features=cat_features, training=False, encoder=encoder
         )[0]
         slice_result = inference(model=model, X=data_input)
         print(slice_result)
