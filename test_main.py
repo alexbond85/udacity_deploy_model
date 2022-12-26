@@ -31,7 +31,7 @@ def test_post():
         capital_gain=2174,
         capital_loss=0,
         hours_per_week=40,
-        native_country="United-States"
+        native_country="United-States",
     )
     data = json.dumps(record)
     r = client.post("/infer", data=data)
@@ -53,11 +53,8 @@ def test_get_req():
         capital_gain=2174111,
         capital_loss=0,
         hours_per_week=40,
-        native_country="United-States"
+        native_country="United-States",
     )
     data = json.dumps(record)
-    r = requests.post(
-        "http://127.0.0.1:8080/infer",
-        data=data
-    )
+    r = requests.post("http://127.0.0.1:8080/infer", data=data)
     assert r.json() == {"pred": 1}
