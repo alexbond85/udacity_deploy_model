@@ -40,9 +40,9 @@ if __name__ == "__main__":
 
     # Train and save a model.
     model = train_model(X_train, y_train)
-
-    save_model(model=model, encoder=encoder, path="../model")
-    model_loaded, encoder_loaded = load_model("../model")
-    y_pred_test = inference(model_loaded, X=X_test)
+    model_data = {"model": model, "encoder": encoder, "lb": lb}
+    save_model(model_data=model_data, path="../model", suffix="_rf")
+    model_data_loaded = load_model("../model", suffix="_rf")
+    y_pred_test = inference(model_data_loaded["model"], X=X_test)
     test_precision, test_recall, test_fbeta = compute_model_metrics(y_test, y_pred_test)
     print(test_precision, test_recall, test_fbeta)

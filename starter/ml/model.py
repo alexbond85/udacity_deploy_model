@@ -67,34 +67,24 @@ def inference(model: RandomForestClassifier, X: np.array):
     return model.predict(X)
 
 
-def _model_path(path: str, suffix: str) -> str:
+def _model_path(path: str, suffix: str):
     return os.path.join(path, f"model{suffix}.pkl")
 
 
-def _encoder_path(path: str, suffix: str) -> str:
-    return os.path.join(path, f"encoder{suffix}.pkl")
-
-
 def save_model(
-    model: RandomForestClassifier, encoder, path: str, suffix: Optional[str] = None
+    model_data: dict, path: str, suffix: Optional[str] = None
 ) -> None:
     if suffix is None:
         suffix = ""
     model_path = _model_path(path, suffix)
-    encoder_path = _encoder_path(path, suffix)
     with open(model_path, "wb") as f:
-        pickle.dump(model, f)
-    with open(encoder_path, "wb") as f:
-        pickle.dump(encoder, f)
+        pickle.dump(model_data, f)
 
 
-def load_model(path: str, suffix: Optional[str] = None) -> Tuple:
+def load_model(path: str, suffix: Optional[str] = None) -> dict:
     if suffix is None:
         suffix = ""
     model_path = _model_path(path, suffix)
-    encoder_path = _encoder_path(path, suffix)
     with open(model_path, "rb") as f:
-        model = pickle.load(f)
-    with open(encoder_path, "rb") as f:
-        encoder = pickle.load(f)
-    return model, encoder
+        model_data = pickle.load(f)
+    return model_data
