@@ -7,7 +7,7 @@ from typing import Iterable
 
 
 def evaluation_on_slices(
-        df_data: pd.DataFrame, cat_col_name: str, model_data: dict
+    df_data: pd.DataFrame, cat_col_name: str, model_data: dict
 ) -> Iterable[dict]:
     categories = sorted(list(set(df_data[cat_col_name])))
     for c in categories:
@@ -26,7 +26,7 @@ def evaluation_on_slices(
         yield res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = pd.read_csv("../data/census.csv")
     model_data_loaded = load_model("../model", suffix="_rf")
     slices_res = list(evaluation_on_slices(data, "education", model_data_loaded))

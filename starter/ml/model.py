@@ -71,9 +71,7 @@ def _model_path(path: str, suffix: str):
     return os.path.join(path, f"model{suffix}.pkl")
 
 
-def save_model(
-    model_data: dict, path: str, suffix: Optional[str] = None
-) -> None:
+def save_model(model_data: dict, path: str, suffix: Optional[str] = None) -> None:
     if suffix is None:
         suffix = ""
     model_path = _model_path(path, suffix)
