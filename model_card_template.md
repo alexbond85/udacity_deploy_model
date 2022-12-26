@@ -1,18 +1,25 @@
 # Model Card
 
-For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
-
 ## Model Details
+Random Forest Classifier with no hyperparameter tuning.  
 
 ## Intended Use
+Educational purposes. Demonstrates the possibility to train, serialize and deserialize 
+a model. As well as performing metrics computation.
 
 ## Training Data
+Obtained through a random train-test split with the proportions 80%/20%.
+The dataset is taken from https://archive.ics.uci.edu/ml/datasets/census+income. 
 
 ## Evaluation Data
+Test data (20%) taken from the train/test split.  
 
 ## Metrics
-_Please include the metrics used and your model's performance on those metrics._
+Evaluations on the test set: 
+precision=0.725, test_recall=0.634, fbeta=0.677
 
 ## Ethical Considerations
+Not applicable.
 
 ## Caveats and Recommendations
+Nothing to mention.
