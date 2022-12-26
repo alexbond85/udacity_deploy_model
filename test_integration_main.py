@@ -1,11 +1,12 @@
 # test_bar.py
 
 import json
+
+import pytest
 from fastapi.testclient import TestClient
 
 from main import app
 import requests
-
 
 client = TestClient(app)
 
@@ -38,6 +39,7 @@ def test_post():
     assert r.json()["pred"] == 0
 
 
+@pytest.mark.skip(reason="Test only if the server on the localhost is running.")
 def test_get_req():
     record = dict(
         age=39,
@@ -60,6 +62,7 @@ def test_get_req():
     assert r.json() == {"pred": 1}
 
 
+@pytest.mark.skip(reason="Test only if the app is deployed.")
 def test_get_req_heroku():
     record = dict(
         age=39,
