@@ -20,7 +20,9 @@ on the test set:
 precision=0.725, recall=0.634, fbeta=0.677
 
 ## Ethical Considerations
-Not applicable.
+Model might exhibit bayes with respect to education, sex, marital status, race. 
 
 ## Caveats and Recommendations
-Nothing to mention.
+In a real scenario the model should be carefully evaluated on the absence of
+bayes described in the Ethical Considerations. It is very likely that it has 
+to be retrained on the data with different sampling.
